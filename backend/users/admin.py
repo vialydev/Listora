@@ -1,12 +1,51 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 
 from .models import User
 
-
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
+    @admin.action(description="Deactivate selected users")
+    def deactivate_users(self, request, queryset):
+        updated = queryset.update(is_active=False)
+
+        self.message_user(
+            request,
+            f"{updated} users were deactivated.",
+            level=messages.SUCCESS,
+        )
+
+    @admin.action(description="Activate selected users")
+    def activate_users(self, request, queryset):
+        updated = queryset.update(is_active=True)
+
+        self.message_user(
+            request,
+            f"{updated} users were activated.",
+            level=messages.SUCCESS,
+        )
+
+    @admin.action(description="Verify Email")
+    def verify_email(self, request, queryset):
+        updated = queryset.update(email_verified=True)
+
+        self.message_user(
+            request,
+            f"Verified email for {updated} users.",
+            level=messages.SUCCESS,
+        )
+
+    @admin.action(description="Unverify Email")
+    def unverify_email(self, request, queryset):
+        updated = queryset.update(email_verified=False)
+
+        self.message_user(
+            request,
+            f"Unverified email for {updated} users.",
+            level=messages.SUCCESS,
+        )
+
     list_display = (
         "id",
         "avatar_preview",
@@ -112,3 +151,10 @@ class CustomUserAdmin(UserAdmin):
                 obj.avatar.url,
             )
         return "—"
+
+    actions = (
+        "activate_users",
+        "deactivate_users",
+        "verify_email",
+        "unverify_email",
+    )
