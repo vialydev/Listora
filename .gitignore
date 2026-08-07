@@ -1,0 +1,18 @@
+# База данных Django (внутри папки backend)
+backend/db.sqlite3
+backend/db.sqlite3-journal
+
+# Виртуальное окружение в корне
+venv/
+.venv/
+env/
+
+# Кэш Python во всех папках
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Секретные файлы и медиа
+backend/.env
+backend/avatars/
