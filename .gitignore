@@ -16,3 +16,4 @@ env/
 # Секретные файлы и медиа
 backend/.env
 backend/avatars/
+images/
