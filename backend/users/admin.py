@@ -2,6 +2,13 @@ from django.contrib import admin, messages
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 
+def badge(text, color):
+    return format_html(
+        '<span style="background:{};color:white;padding:5px 10px;border-radius:20px;font-weight:600;font-size:12px;">{}</span>',
+        color,
+        text,
+    )
+
 from .models import User
 
 @admin.register(User)
@@ -46,15 +53,46 @@ class CustomUserAdmin(UserAdmin):
             level=messages.SUCCESS,
         )
 
+    @admin.display(description="Role", ordering="role")
+    def role_badge(self, obj):
+        colors = {
+        User.Role.USER: "#2563eb",        # blue
+        User.Role.MODERATOR: "#d97706",  # orange
+        User.Role.ADMIN: "#dc2626",      # red
+        }
+
+        return badge(obj.get_role_display(), colors.get(obj.role, "#6b7280"))
+
+    @admin.display(description="Status", ordering="is_active")
+    def status_badge(self, obj):
+        if obj.is_active:
+            return badge("Active", "#16a34a")
+
+        return badge("Inactive", "#dc2626")
+
+    @admin.display(description="Email")
+    def email_status(self, obj):
+        if obj.email_verified:
+            return badge("Verified", "#16a34a")
+
+        return badge("Unverified", "#dc2626")
+
+    @admin.display(description="Phone")
+    def phone_status(self, obj):
+        if obj.phone_verified:
+            return badge("Verified", "#16a34a")
+
+        return badge("Unverified", "#dc2626")
+
     list_display = (
         "id",
         "avatar_preview",
         "username",
         "email",
         "phone",
-        "role",
-        "is_active",
-        "email_verified",
+        "role_badge",
+        "status_badge",
+        "email_status",
         "date_joined",
     )
 
@@ -158,3 +196,4 @@ class CustomUserAdmin(UserAdmin):
         "verify_email",
         "unverify_email",
     )
+    
