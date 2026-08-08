@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Register | Listora
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users/register.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="register-page">
+
+    <!-- Background -->
+    <div class="background">
+        <div class="purple-circle"></div>
+        <div class="green-circle"></div>
+    </div>
+
+    <!-- Left -->
+    <section class="left-side">
+
+        <div class="brand">
+
+            <h2 class="welcome">
+                Welcome to
+            </h2>
+
+            <h1 class="logo">
+                Listora
+            </h1>
+
+        </div>
+
+        <p class="description">
+            The easiest way to buy, sell, and discover amazing deals
+        </p>
+
+        <ul class="features">
+
+            <li>Free listing creation</li>
+
+            <li>Secure messaging</li>
+
+            <li>Smart search & filters</li>
+
+            <li>Save your favourite items</li>
+
+            <li>Manage everything from one dashboard</li>
+
+        </ul>
+
+    </section>
+
+    <!-- Right -->
+
+    <section class="right-side">
+
+        <div class="register-card">
+
+            <h2>
+                Create an account.
+            </h2>
+
+            <p class="signin-text">
+                Already have an account?
+                <a href="#">
+                    Sign in
+                </a>
+            </p>
+
+            <form method="post" novalidate>
+
+                {% csrf_token %}
+
+                <div class="form-group">
+
+                    <label for="{{ form.username.id_for_label }}">
+                        Username
+                    </label>
+
+                    {{ form.username }}
+
+                    {% if form.username.errors %}
+                        <small class="error">
+                            {{ form.username.errors }}
+                        </small>
+                    {% endif %}
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="{{ form.first_name.id_for_label }}">
+                        Name
+                    </label>
+
+                    {{ form.first_name }}
+
+                    {% if form.first_name.errors %}
+                        <small class="error">
+                            {{ form.first_name.errors }}
+                        </small>
+                    {% endif %}
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="{{ form.last_name.id_for_label }}">
+                        Lastname
+                    </label>
+
+                    {{ form.last_name }}
+
+                    {% if form.last_name.errors %}
+                        <small class="error">
+                            {{ form.last_name.errors }}
+                        </small>
+                    {% endif %}
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="{{ form.email.id_for_label }}">
+                        Email
+                    </label>
+
+                    {{ form.email }}
+
+                    {% if form.email.errors %}
+                        <small class="error">
+                            {{ form.email.errors }}
+                        </small>
+                    {% endif %}
+
+                </div>
+
+                <div class="form-group password-group">
+
+                    <label for="{{ form.password1.id_for_label }}">
+                        Password
+                    </label>
+
+                    {{ form.password1 }}
+
+                    <button
+                            type="button"
+                            class="toggle-password"
+                            data-target="id_password1">
+
+                        👁
+
+                    </button>
+
+                    {% if form.password1.errors %}
+                        <small class="error">
+                            {{ form.password1.errors }}
+                        </small>
+                    {% endif %}
+
+                </div>
+
+                <div class="form-group password-group">
+
+                    <label for="{{ form.password2.id_for_label }}">
+                        Confirm password
+                    </label>
+
+                    {{ form.password2 }}
+
+                    <button
+                            type="button"
+                            class="toggle-password"
+                            data-target="id_password2">
+
+                        👁
+
+                    </button>
+
+                    {% if form.password2.errors %}
+                        <small class="error">
+                            {{ form.password2.errors }}
+                        </small>
+                    {% endif %}
+
+                </div>
+
+                {% if form.non_field_errors %}
+
+                    <div class="error-box">
+
+                        {{ form.non_field_errors }}
+
+                    </div>
+
+                {% endif %}
+
+                <button
+                        class="register-btn"
+                        type="submit">
+
+                    Sign Up
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/users/register.js' %}"></script>
+{% endblock %}
