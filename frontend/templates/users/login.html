@@ -1,0 +1,210 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/users/login.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"
+    >
+
+    <title>Listora | Login</title>
+
+</head>
+
+<body>
+
+    <style>
+        .login-img {
+            width: 200px;
+            height: 200px;
+            margin-bottom: -20px;
+
+            background-image: url('{% static "img/login.png" %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            border-radius: 50%;
+
+            transition: background-image 0.3s ease-in;
+        }
+    </style>
+
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+
+    <div class="page">
+
+        <div class="login_card">
+
+            <div class="login-img"></div>
+
+
+            <div class="login_header">
+
+                <h1>Login</h1>
+
+                <p>
+                    Have no account?
+                    <a href="{% url 'users:register' %}">
+                        Sign up
+                    </a>
+                </p>
+
+            </div>
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                <!-- NEXT URL -->
+
+                <input
+                    type="hidden"
+                    name="next"
+                    value="{{ request.GET.next|default:'' }}"
+                >
+
+
+                <!-- USERNAME / EMAIL -->
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        id="username_or_email"
+                        name="username_or_email"
+                        placeholder="Username or Email"
+                        required
+                        autocomplete="username"
+                        class="login-input"
+                        value="{{ form.username_or_email.value|default:'' }}"
+                    >
+
+                </div>
+
+
+                <!-- USERNAME / EMAIL ERROR -->
+
+                {% if form.username_or_email.errors %}
+
+                    <div class="form-error">
+
+                        {{ form.username_or_email.errors }}
+
+                    </div>
+
+                {% endif %}
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group password-wrapper">
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                        autocomplete="current-password"
+                        class="login-input"
+                    >
+
+                    <button
+                        type="button"
+                        class="toggle-password-btn"
+                        aria-label="Show password"
+                    >
+
+                        <svg
+                            class="eye-icon"
+                            viewBox="0 0 24 24"
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <path
+                                d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z">
+                            </path>
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="3">
+                            </circle>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <!-- PASSWORD ERROR -->
+
+                {% if form.password.errors %}
+
+                    <div class="form-error">
+
+                        {{ form.password.errors }}
+
+                    </div>
+
+                {% endif %}
+
+
+                <!-- GENERAL FORM ERROR -->
+
+                {% if form.non_field_errors %}
+
+                    <div class="form-error form-error-general">
+
+                        {{ form.non_field_errors }}
+
+                    </div>
+
+                {% endif %}
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+                    Login
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="{% static 'js/users/login.js' %}"></script>
+
+</body>
+
+</html>

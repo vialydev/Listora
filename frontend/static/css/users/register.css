@@ -22,7 +22,8 @@ body {
 .register-page {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    box-sizing: border-box;
 
     display: flex;
     justify-content: center;
@@ -155,28 +156,18 @@ body {
 =========================== */
 
 .right-side {
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
 }
 
 .register-card {
-
     width: 500px;
-
+    /* height: 600px; */
     background: white;
-
     border-radius: 34px;
-
     padding: 50px;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.05);
-
+    box-shadow: 0 20px 60px rgba(0,0,0,.05);
 }
 
 /* ===========================
@@ -184,43 +175,27 @@ body {
 =========================== */
 
 .register-card h2 {
-
     text-align: center;
-
     font-family: "Montserrat", sans-serif;
-
     font-size: 38px;
-
     font-weight: 700;
-
     margin-bottom: 10px;
-
 }
 
 .signin-text {
-
     text-align: center;
-
     color: #9c9c9c;
-
-    margin-bottom: 45px;
-
+    margin-bottom: 25px;
 }
 
 .signin-text a {
-
     text-decoration: none;
-
     color: #8D00FF;
-
     font-weight: 500;
-
 }
 
 .signin-text a:hover {
-
     text-decoration: underline;
-
 }
 
 /* ===========================
@@ -228,29 +203,19 @@ body {
 =========================== */
 
 form {
-
     display: flex;
-
     flex-direction: column;
-
-    gap: 18px;
-
+    gap: 10px;
 }
 
 .form-group {
-
     display: flex;
-
     flex-direction: column;
-
     position: relative;
-
 }
 
 .form-group label {
-
     display: none;
-
 }
 
 /* ===========================
@@ -258,39 +223,24 @@ form {
 =========================== */
 
 .form-input {
-
     width: 100%;
-
-    height: 56px;
-
+    height: 35px;
     padding: 0 18px;
-
     border-radius: 14px;
-
     border: 2px solid #D7D7D7;
-
     outline: none;
-
-    font-size: 17px;
-
+    font-size: 14px;
     font-family: "Roboto", sans-serif;
-
-    transition: .25s;
-
+    transition: 0.25s;
     background: white;
-
 }
 
 .form-input::placeholder {
-
     color: #BDBDBD;
-
 }
 
 .form-input:focus {
-
     border-color: #8D00FF;
-
 }
 
 /* ===========================
@@ -298,29 +248,18 @@ form {
 =========================== */
 
 .password-group {
-
     position: relative;
-
 }
 
 .toggle-password {
-
     position: absolute;
-
-    top: 50%;
-
+    top: 26%;
     right: 18px;
-
     transform: translateY(-50%);
-
     border: none;
-
     background: transparent;
-
     cursor: pointer;
-
     font-size: 18px;
-
 }
 
 /* ===========================
@@ -328,27 +267,17 @@ form {
 =========================== */
 
 .error {
-
     margin-top: 8px;
-
     color: #E53935;
-
     font-size: 14px;
-
 }
 
 .error-box {
-
     background: #FFECEC;
-
     color: #D32F2F;
-
     padding: 14px;
-
     border-radius: 12px;
-
     font-size: 15px;
-
 }
 
 /* ===========================
@@ -356,29 +285,16 @@ form {
 =========================== */
 
 .register-btn {
-
-    margin-top: 8px;
-
-    height: 58px;
-
+    height: 40px;
     border: none;
-
     border-radius: 14px;
-
     cursor: pointer;
-
     background: #09C15F;
-
     color: white;
-
     font-family: "Montserrat", sans-serif;
-
-    font-size: 22px;
-
+    font-size: 18px;
     font-weight: 700;
-
     transition: .25s;
-
 }
 
 .register-btn:hover {
