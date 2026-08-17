@@ -41,10 +41,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'main.urls'
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'frontend' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -55,6 +59,9 @@ TEMPLATES = [
         },
     },
 ]
+
+STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "frontend" / "static"]
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
@@ -107,3 +114,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 AUTH_USER_MODEL = 'users.User'
+
+
+
+AUTHENTICATION_BACKENDS = [
+    "users.backends.UsernameOrEmailBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]

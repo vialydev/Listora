@@ -1,0 +1,468 @@
+/* ===========================
+   RESET
+=========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f5f5f5;
+    font-family: "Roboto", sans-serif;
+    color: #111;
+    overflow-x: hidden;
+}
+
+/* ===========================
+   PAGE
+=========================== */
+
+.register-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 90px;
+
+    padding: 50px 80px;
+}
+
+/* ===========================
+   BACKGROUND
+=========================== */
+
+.background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.purple-circle {
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    left: 260px;
+    top: 70px;
+
+    border-radius: 50%;
+
+    background: rgba(183, 0, 255, .55);
+
+    filter: blur(120px);
+}
+
+.green-circle {
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    left: 150px;
+    bottom: 70px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 255, 179, .45);
+
+    filter: blur(120px);
+}
+
+/* ===========================
+   LEFT SIDE
+=========================== */
+
+.left-side {
+
+    width: 520px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.brand {
+    margin-bottom: 30px;
+}
+
+.welcome {
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 58px;
+
+    font-weight: 700;
+
+    color: #C48BFF;
+
+    line-height: 1.05;
+
+}
+
+.logo {
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 82px;
+
+    font-weight: 800;
+
+    color: #8D00FF;
+
+    line-height: 1;
+
+}
+
+.description {
+
+    font-size: 22px;
+
+    line-height: 1.5;
+
+    max-width: 470px;
+
+    margin-bottom: 40px;
+
+}
+
+.features {
+
+    margin-left: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    font-size: 18px;
+
+    line-height: 1.45;
+
+}
+
+/* ===========================
+   RIGHT SIDE
+=========================== */
+
+.right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-card {
+    width: 500px;
+    /* height: 600px; */
+    background: white;
+    border-radius: 34px;
+    padding: 50px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.05);
+}
+
+/* ===========================
+   TITLE
+=========================== */
+
+.register-card h2 {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.signin-text {
+    text-align: center;
+    color: #9c9c9c;
+    margin-bottom: 25px;
+}
+
+.signin-text a {
+    text-decoration: none;
+    color: #8D00FF;
+    font-weight: 500;
+}
+
+.signin-text a:hover {
+    text-decoration: underline;
+}
+
+/* ===========================
+   FORM
+=========================== */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form-group label {
+    display: none;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+.form-input {
+    width: 100%;
+    height: 35px;
+    padding: 0 18px;
+    border-radius: 14px;
+    border: 2px solid #D7D7D7;
+    outline: none;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    transition: 0.25s;
+    background: white;
+}
+
+.form-input::placeholder {
+    color: #BDBDBD;
+}
+
+.form-input:focus {
+    border-color: #8D00FF;
+}
+
+/* ===========================
+   PASSWORD
+=========================== */
+
+.password-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 26%;
+    right: 18px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* ===========================
+   ERRORS
+=========================== */
+
+.error {
+    margin-top: 8px;
+    color: #E53935;
+    font-size: 14px;
+}
+
+.error-box {
+    background: #FFECEC;
+    color: #D32F2F;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.register-btn {
+    height: 40px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    background: #09C15F;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.register-btn:hover {
+    background: #08ae56;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(9, 193, 95, 0.25);
+}
+
+.register-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+
+.form-input.error-input {
+    border-color: #e53935;
+}
+
+.form-input.error-input:focus {
+    border-color: #e53935;
+    box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.08);
+}
+
+
+
+.form-input:focus {
+    border-color: #8d00ff;
+    box-shadow: 0 0 0 3px rgba(141, 0, 255, 0.08);
+}
+
+
+
+.toggle-password {
+    color: #999;
+    transition: color 0.2s ease, trasform 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: #8d00ff;
+}
+
+.toggle-password:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+
+
+.left-side {
+    animation: slideFromLeft 0.8s ease forwards;
+}
+
+.right-side {
+    animation: slideFromRight 0.8s ease forwards;
+}
+
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+.purple-circle {
+    animation: purpleFloat 8s ease-in-out infinite;
+}
+
+.green-circle {
+    animation: greenFloat 8s ease-in-out infinite;
+}
+
+@keyframes purpleFloat {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(25px, -20px);
+    }
+}
+
+@keyframes greenFloat {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-20px, 25px);
+    }
+}
+
+
+
+
+.form-input:-webkit-autofill, .form-input:-webkit-autofill:hover, .form-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #111;
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+::selection {
+    background: #8d00ff;
+    color: white;
+}
+
+
+
+@media (max-width: 1100px) {
+    .register-page {
+        gap: 50px;
+        padding: 40px;
+    }
+    .left-side {
+        width: 430px;
+    }
+    .welcome {
+        font-size: 48px;
+    }
+    .logo {
+        font-size: 68px;
+    }
+    .description {
+        font-size: 19px;
+    }
+    .features {
+        font-size: 16px;
+    }
+    .register-card {
+        width: 440px;
+        padding: 40px;
+    }
+    .register-card h2 {
+        font-size: 32px;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01s !important;
+        scroll-behavior: auto !important;
+    }
+}
